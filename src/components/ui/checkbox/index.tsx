@@ -1,16 +1,12 @@
 import * as React from 'react'
 import { FC } from 'react'
 
-// @ts-ignore
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
-// @ts-ignore
 import * as LabelRadix from '@radix-ui/react-label'
-// @ts-ignore
-// eslint-disable-next-line import/order
 import { clsx } from 'clsx'
 
-import Check from '../../../assets/icons/check'
-import { Typography } from '../typography/typography'
+import { Check } from '../../../assets/icons'
+import { Typography } from '../typography'
 
 // eslint-disable-next-line import/no-unresolved
 

@@ -15,7 +15,7 @@ interface ButtonProps {
    */
   size?: 'small' | 'medium' | 'large'
   /**
-   * Button contents
+   * Index contents
    */
   label: string
   /**

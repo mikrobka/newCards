@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/default
 import React, { SVGProps, Ref, forwardRef, memo } from 'react'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
@@ -19,4 +18,4 @@ const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) =
 )
 const ForwardRef = forwardRef(SvgComponent)
 
-export default memo(ForwardRef)
+export const Check = memo(ForwardRef)
