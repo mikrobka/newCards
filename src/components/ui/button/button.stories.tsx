@@ -1,14 +1,8 @@
-import * as React from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
 
-// @ts-ignore
-import { StoryObj } from '@storybook/react'
+import { Button } from './'
 
-// @ts-ignore
-import { Logout } from '../../../assets/icons/index.ts'
-
-import { Button } from './button'
-
-const meta = {
+const meta: Meta<Partial<typeof Button>> = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
@@ -47,7 +41,7 @@ export const Tertiary: Story = {
 }
 export const Link: Story = {
   args: {
-    variant: 'link',
+    variant: 'tertiary',
     children: 'Tertiary Button',
     disabled: false,
   },
@@ -61,23 +55,11 @@ export const FullWidth: Story = {
     fullWidth: true,
   },
 }
-
 export const AsLink: Story = {
   args: {
     variant: 'primary',
     children: 'Link that looks like a button',
     as: 'a',
-  },
-}
-
-export const PrimaryWithIcon: Story = {
-  args: {
-    variant: 'primary',
-    children: (
-      <>
-        <Logout /> Sign Out
-      </>
-    ),
-    as: 'a',
+    href: 'https://www.google.com',
   },
 }

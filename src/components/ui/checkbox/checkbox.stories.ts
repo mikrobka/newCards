@@ -1,6 +1,3 @@
-import * as React from 'react'
-
-// @ts-ignore
 import { StoryObj } from '@storybook/react'
 
 import { Checkbox } from './checkbox'

@@ -1,9 +1,8 @@
-// @ts-ignore
-import { StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Typography } from './typography'
 
-const meta = {
+const meta: Meta<Partial<typeof Typography>> = {
   title: 'Components/Typography',
   component: Typography,
   tags: ['autodocs'],
