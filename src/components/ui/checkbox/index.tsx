@@ -11,7 +11,7 @@ import s from './checkbox.module.scss'
 
 import { Check } from '@assets/icons'
 
-type CheckboxType = {
+export type CheckboxType = {
   checked?: boolean
   onChange?: () => void
   position?: 'left'
