@@ -1,5 +1,11 @@
 module.exports = {
-    extends: ['@it-incubator/eslint-config', 'plugin:storybook/recommended'],
+    extends: ['@it-incubator/eslint-config', 'plugin:storybook/recommended', "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"],
+    parser: "@typescript-eslint/parser",
+    plugins: ["@typescript-eslint", "import"],
     rules: {
         'no-console': ['warn', {
             allow: ['warn', 'error']
@@ -7,12 +13,8 @@ module.exports = {
     },
     "settings": {
         "import/resolver": {
-            "alias": {
-                "map": [
-                    ["src", "./src"]  // Replace this with your actual alias configuration
-                ],
-                "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
-            }
+            "typescript": {} // This enables eslint-import-resolver-typescript
         }
-    }
+    },
+
 };

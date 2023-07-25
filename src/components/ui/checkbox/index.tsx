@@ -9,7 +9,7 @@ import { Typography } from '../typography'
 
 import s from './checkbox.module.scss'
 
-import { Check } from 'src/assets/icons'
+import { Check } from '@assets/icons'
 
 type CheckboxType = {
   checked?: boolean
