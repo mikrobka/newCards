@@ -1,11 +1,5 @@
 import * as React from 'react'
 
-import { TextField } from './components/ui/text-field'
-
 export function App() {
-  return (
-    <div>
-      <TextField />
-    </div>
-  )
+  return <div>App</div>
 }
