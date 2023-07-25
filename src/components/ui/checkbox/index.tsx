@@ -5,12 +5,11 @@ import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 import { clsx } from 'clsx'
 
-import { Check } from '../../../assets/icons'
 import { Typography } from '../typography'
 
-// eslint-disable-next-line import/no-unresolved
-
 import s from './checkbox.module.scss'
+
+import { Check } from 'src/assets/icons'
 
 type CheckboxType = {
   checked?: boolean
