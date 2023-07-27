@@ -1,5 +1,11 @@
 import * as React from 'react'
 
+import { SignIn } from '@components/auth/sign-in'
+
 export function App() {
-  return <div>App</div>
+  return (
+    <div>
+      <SignIn />
+    </div>
+  )
 }

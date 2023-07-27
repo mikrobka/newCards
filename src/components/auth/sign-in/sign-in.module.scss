@@ -1,0 +1,35 @@
+.card {
+  max-width: 26.3rem;
+  padding: 2.06rem 2.25rem 1.81rem 2.25rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.69rem;
+}
+
+.checkbox {
+  margin: 0.75rem 0 0.38rem 0;
+}
+
+.forgotPassword {
+  display: flex;
+  justify-content: end;
+  text-decoration: none;
+  margin-bottom: 4.12rem;
+}
+
+.textField:not(:first-of-type) {
+  margin-top: 1.5rem;
+}
+
+.description {
+  color: var(--light-color-900, #c3c1c7);
+  text-align: center;
+}
+
+.signUp {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.69rem;
+}
