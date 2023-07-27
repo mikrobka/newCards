@@ -1,12 +1,11 @@
 import React from 'react'
 
-import s from './sign-in.module.scss'
-
 import { useSignIn } from '@components/auth/sign-in/use-sign-in'
 import Button from '@components/ui/button'
 import { Card } from '@components/ui/card'
 import { ControlledCheckbox, ControlledTextField } from '@components/ui/controlled'
 import { Typography } from '@components/ui/typography'
+import s from 'src/components/auth/sign-up/sign-up.module.scss'
 
 type SignInProps = {
   onSubmit: (data: any) => void
