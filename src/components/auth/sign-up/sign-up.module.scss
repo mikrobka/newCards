@@ -8,8 +8,12 @@
   margin-bottom: 1.69rem;
 }
 
-.checkbox {
-  margin: 0.75rem 0 0.38rem 0;
+.textField {
+  margin-top: 1.5rem;
+}
+
+.signUp {
+  margin-top: 3.75rem;
 }
 
 .forgotPassword {
@@ -19,17 +23,19 @@
   margin-bottom: 4.12rem;
 }
 
-.textField:not(:first-of-type) {
-  margin-top: 1.5rem;
-}
-
 .description {
+  margin-top: 1.25rem;
   color: var(--light-color-900, #c3c1c7);
   text-align: center;
 }
 
-.signUp {
+.signIn {
   display: flex;
   justify-content: center;
   margin-top: 0.69rem;
+  color: var(--primary-500, #8c61ff);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  text-decoration-line: underline;
 }

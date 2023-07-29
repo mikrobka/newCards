@@ -25,7 +25,7 @@ const Button = <T extends React.ElementType = 'button'>(
   } = props
 
   const classNames = {
-    root: clsx(s[variant], fullWidth && s.fullWidth, className),
+    root: clsx(className, s[variant], fullWidth && s.fullWidth),
   }
 
   return <Component ref={ref} className={classNames.root} {...otherProps} />

@@ -1,10 +1,10 @@
 import { StoryObj } from '@storybook/react'
 
-import { LoginForm } from './'
+import { SignIn } from './'
 
 const meta = {
-  title: 'Components/LoginForm',
-  component: LoginForm,
+  title: 'Components/SignIn',
+  component: SignIn,
   tags: ['autodocs'],
 }
 

@@ -14,7 +14,7 @@ const schema = z.object({
 
 type Form = z.infer<typeof schema>
 
-export const useSignIn = (onSubmit: any) => {
+export const useSignInForm = (onSubmit: any) => {
   const { handleSubmit, ...rest } = useForm<Form>({
     resolver: zodResolver(schema),
     mode: 'onSubmit',

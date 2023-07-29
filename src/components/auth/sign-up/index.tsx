@@ -1,23 +1,26 @@
 import React from 'react'
 
-import { useSignIn } from '@components/auth/sign-in/use-sign-in'
+import s from './sign-up.module.scss'
+
+import { useSignUpForm } from '@components/auth/sign-up/use-sign-up'
 import Button from '@components/ui/button'
 import { Card } from '@components/ui/card'
-import { ControlledCheckbox, ControlledTextField } from '@components/ui/controlled'
+import { ControlledTextField } from '@components/ui/controlled'
 import { Typography } from '@components/ui/typography'
-import s from 'src/components/auth/sign-up/sign-up.module.scss'
+
+//TODO : add error message if confirm password !== password
 
 type SignInProps = {
   onSubmit: (data: any) => void
 }
 
-export const SignIn = ({ onSubmit }: SignInProps) => {
-  const { handleSubmit, control } = useSignIn(onSubmit)
+export const SignUp = ({ onSubmit }: SignInProps) => {
+  const { handleSubmit, control } = useSignUpForm(onSubmit)
 
   return (
     <Card className={s.card}>
       <Typography className={s.title} variant={'large'}>
-        Sign in
+        Sign Up
       </Typography>
       <form onSubmit={handleSubmit} className={s.form}>
         <ControlledTextField
@@ -33,31 +36,23 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           control={control}
           containerProps={{ className: s.textField }}
         />
-        <ControlledCheckbox
-          position={'left'}
-          label={'Remember me '}
-          name={'rememberMe'}
+        <ControlledTextField
+          type={'password'}
+          label={'Confirm Password'}
+          name={'confirmPassword'}
           control={control}
-          className={s.checkbox}
+          containerProps={{ className: s.textField }}
         />
-        <Typography
-          className={s.forgotPassword}
-          variant={'body2'}
-          href={'/forgot-password'}
-          as={'a'}
-        >
-          Forgot Password?
-        </Typography>
-        <Button fullWidth type={'submit'} className={s.signIn}>
-          Sign In
+        <Button fullWidth type={'submit'} className={s.signUp}>
+          Sign Up
         </Button>
       </form>
       <Typography className={s.description} variant={'body2'}>
         {/* eslint-disable-next-line react/no-unescaped-entities */}
-        Don't have an account?
+        Already have an account?
       </Typography>
-      <Typography as={'a'} href={'/sign-up'} className={s.signUp} variant={'link1'}>
-        Sign Up
+      <Typography className={s.signIn} variant={'link1'} as={'a'} href={'/sign-in'}>
+        Sign In
       </Typography>
     </Card>
   )

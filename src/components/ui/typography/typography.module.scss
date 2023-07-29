@@ -1,7 +1,10 @@
 @mixin typography($fontSize, $lineHeight, $fontWeight) {
+  margin: 0;
+
   font-size: $fontSize;
   font-weight: $fontWeight;
   line-height: $lineHeight;
+  color: var(--color-text-primary);
 }
 
 .large {
@@ -49,7 +52,7 @@
   @include typography(var(--font-size-s), var(--line-height-m), var(--font-weight-regular));
 
   cursor: pointer;
-  color: var(--color-primary);
+  color: var(--color-text-link);
   text-decoration: underline;
 }
 
