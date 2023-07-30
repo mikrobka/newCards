@@ -1,12 +1,13 @@
 import React from 'react'
 
-import s from './forgot-password.module.scss'
-
 import { useSignUpForm } from '@components/auth/sign-up/use-sign-up'
 import Button from '@components/ui/button'
 import { Card } from '@components/ui/card'
 import { ControlledTextField } from '@components/ui/controlled'
 import { Typography } from '@components/ui/typography'
+
+// eslint-disable-next-line
+import s from './forgot-password.module.scss'
 
 type SignInProps = {
   onSubmit: (data: any) => void
