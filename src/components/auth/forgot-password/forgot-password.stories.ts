@@ -1,10 +1,10 @@
 import { StoryObj } from '@storybook/react'
 
-import { SignIn } from './'
+import { ForgotPassword } from './'
 
 const meta = {
-  title: 'Components/Auth/SignIn',
-  component: SignIn,
+  title: 'Components/Auth/ForgotPassword',
+  component: ForgotPassword,
   tags: ['autodocs'],
 }
 

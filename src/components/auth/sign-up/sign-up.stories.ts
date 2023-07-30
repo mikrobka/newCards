@@ -3,7 +3,7 @@ import { StoryObj } from '@storybook/react'
 import { SignUp } from './'
 
 const meta = {
-  title: 'Components/SignUp',
+  title: 'Components/Auth/SignUp',
   component: SignUp,
   tags: ['autodocs'],
 }

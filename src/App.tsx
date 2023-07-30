@@ -8,5 +8,9 @@ export function App() {
     console.log(data)
   }
 
-  return <div>hello</div>
+  return (
+    <div>
+      <SignUp onSubmit={signInHandler} />
+    </div>
+  )
 }
