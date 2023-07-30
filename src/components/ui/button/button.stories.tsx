@@ -1,8 +1,10 @@
+import { ComponentProps } from 'react'
+
+import Button from '@components/ui/button/index'
+
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Button } from './'
-
-const meta: Meta<Partial<typeof Button>> = {
+const meta: Meta<ComponentProps<typeof Button>> = {
   title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],

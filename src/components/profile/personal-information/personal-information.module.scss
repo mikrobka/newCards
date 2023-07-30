@@ -1,0 +1,66 @@
+.card {
+  max-width: 26.3rem;
+  padding: 2.06rem 5.75rem 2.56rem 5rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1.69rem;
+}
+
+.avatar {
+  width: 6rem;
+  height: 6rem;
+}
+
+.photoContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 6px;
+
+  > div {
+    position: relative;
+
+    > img {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    > .editAvatarButton {
+      all: unset;
+
+      cursor: pointer;
+
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      width: 32px;
+      height: 32px;
+
+      &:focus-visible {
+        outline: var(--outline-focus);
+      }
+    }
+  }
+}
+
+.nameContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.56rem;
+}
+
+.email {
+  text-align: center;
+  color: var(--dark-100, #808080);
+  margin-bottom: 0.81rem;
+}
+.logout {
+  display: flex;
+  justify-content: center;
+}
