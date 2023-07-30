@@ -1,6 +1,5 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
-
 import { clsx } from 'clsx'
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import s from './card.module.scss'
 

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import s from './sign-up.module.scss'
-
 import { useSignUpForm } from '@components/auth/sign-up/use-sign-up'
 import Button from '@components/ui/button'
 import { Card } from '@components/ui/card'
 import { ControlledTextField } from '@components/ui/controlled'
 import { Typography } from '@components/ui/typography'
+
+import s from './sign-up.module.scss'
 
 //TODO : add error message if confirm password !== password
 

@@ -6,7 +6,6 @@ import { Card } from '@components/ui/card'
 import { ControlledTextField } from '@components/ui/controlled'
 import { Typography } from '@components/ui/typography'
 
-// eslint-disable-next-line
 import s from './forgot-password.module.scss'
 
 type SignInProps = {
