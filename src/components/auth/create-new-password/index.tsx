@@ -1,9 +1,6 @@
 import React from 'react'
 
-import Button from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { ControlledTextField } from '@components/ui/controlled'
-import { Typography } from '@components/ui/typography'
+import { Typography, ControlledTextField, Card, Button } from '@components/ui'
 
 import s from './create-new-password.module.scss'
 import { useCreateNewPassword } from './use-create-new-password'

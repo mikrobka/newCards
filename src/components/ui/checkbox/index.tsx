@@ -1,14 +1,12 @@
-import * as React from 'react'
-import { FC } from 'react'
-
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
 import { clsx } from 'clsx'
-
-import s from './checkbox.module.scss'
+import React, { FC } from 'react'
 
 import { Check } from '@assets/icons'
-import { Typography } from '@components/ui/typography'
+import { Typography } from '@components/ui'
+
+import s from './checkbox.module.scss'
 
 export type CheckboxType = {
   checked?: boolean

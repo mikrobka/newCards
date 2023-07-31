@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { Email } from '@assets/icons/email'
-import Button from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { Typography } from '@components/ui/typography'
+import { Email } from '@assets/icons'
+import { Typography, Button, Card } from '@components/ui'
 
 import s from './check-email.module.scss'
 

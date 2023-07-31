@@ -2,9 +2,7 @@ import React from 'react'
 
 import { Camera, Edit, Logout } from '@assets/icons'
 import Ava from '@assets/images/ava2.png'
-import Button from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { Typography } from '@components/ui/typography'
+import { Card, Typography, Button } from '@components/ui'
 
 import s from './personal-information.module.scss'
 

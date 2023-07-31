@@ -11,7 +11,7 @@ export interface ButtonProps<T extends React.ElementType = 'button'> {
   className?: string
 }
 
-const Button = <T extends React.ElementType = 'button'>(
+const ButtonRef = <T extends React.ElementType = 'button'>(
   props: ButtonProps<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof ButtonProps<T>>,
   ref: React.ForwardedRef<any>
 ) => {
@@ -30,4 +30,4 @@ const Button = <T extends React.ElementType = 'button'>(
   return <Component ref={ref} className={classNames.root} {...otherProps} />
 }
 
-export default forwardRef(Button)
+export const Button = forwardRef(ButtonRef)

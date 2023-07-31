@@ -1,19 +1,16 @@
 import React from 'react'
 
-import { useSignUpForm } from '@components/auth/sign-up/use-sign-up'
-import Button from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { ControlledTextField } from '@components/ui/controlled'
-import { Typography } from '@components/ui/typography'
+import { ControlledTextField, Card, Button, Typography } from '@components/ui'
 
 import s from './forgot-password.module.scss'
+import { useForgotPassword } from './use-forgot-password'
 
 type SignInProps = {
   onSubmit: (data: any) => void
 }
 
 export const ForgotPassword = ({ onSubmit }: SignInProps) => {
-  const { handleSubmit, control } = useSignUpForm(onSubmit)
+  const { handleSubmit, control } = useForgotPassword(onSubmit)
 
   return (
     <Card className={s.card}>

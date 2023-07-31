@@ -1,10 +1,7 @@
 import React from 'react'
 
 import { useSignUpForm } from '@components/auth/sign-up/use-sign-up'
-import Button from '@components/ui/button'
-import { Card } from '@components/ui/card'
-import { ControlledTextField } from '@components/ui/controlled'
-import { Typography } from '@components/ui/typography'
+import { Card, Typography, Button, ControlledTextField } from '@components/ui'
 
 import s from './sign-up.module.scss'
 
