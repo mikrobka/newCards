@@ -1,5 +1,3 @@
-import { logDOM } from '@storybook/testing-library'
-import * as console from 'console'
 import React, { ComponentPropsWithoutRef, MouseEventHandler } from 'react'
 
 export type Sort = {
