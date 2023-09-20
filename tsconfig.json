@@ -30,8 +30,9 @@
         "./src/assets/*"
       ]
     },
-    "types": [
-      "testing-library__jest-dom"
+    "typeRoots": [
+      "./node_modules/@types",
+      "./custom-typings"
     ]
   },
   "include": [

@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 
-import Button from '@components/ui/button/index'
+import { Button } from '@components/ui'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
