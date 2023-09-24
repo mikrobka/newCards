@@ -53,6 +53,9 @@ export const Default: Story = {
 export const WithSort = {
   render: () => {
     const [sort, setSort] = useState<Sort>(null)
+    const sortString = sort ? `${sort.key}-${sort.direction}` : null
+
+    console.log(sort, sortString)
 
     const columns: Colum[] = [
       {

@@ -1,4 +1,9 @@
+import { clsx } from 'clsx'
 import React, { ComponentPropsWithoutRef, MouseEventHandler } from 'react'
+
+import { ChevronUp } from '@assets/icons'
+
+import s from './table.module.scss'
 
 export type Sort = {
   key: string
@@ -11,11 +16,14 @@ export type Colum = {
   isSortable?: boolean
 }
 
-type Props = ComponentPropsWithoutRef<'thead'> & {
-  columns: Array<Colum>
-  sort: Sort
-  onSort: (sort: Sort) => void
-}
+type Props = Omit<
+  ComponentPropsWithoutRef<'thead'> & {
+    columns: Array<Colum>
+    sort: Sort
+    onSort: (sort: Sort) => void
+  },
+  'children'
+>
 
 const dataAttributes = {
   sortable: 'data-sortable',
@@ -23,13 +31,14 @@ const dataAttributes = {
 } as const
 
 export const TableHeader = ({ columns, sort, onSort }: Props) => {
-  const handleSorting: MouseEventHandler<HTMLTableHeaderCellElement> = e => {
-    const isSortable = e.currentTarget.getAttribute(dataAttributes.sortable)
-    const key = e.currentTarget.getAttribute(dataAttributes.name)
+  const handleSorting: MouseEventHandler<HTMLTableRowElement> = e => {
+    if (!(e.target instanceof HTMLTableCellElement)) return
+    const isSortable = e.target.getAttribute(dataAttributes.sortable)
+    const key = e.target.getAttribute(dataAttributes.name)
 
     if (key === null) throw new Error('No data-name')
 
-    if (!isSortable) return
+    if (!isSortable || isSortable !== 'true') return
     if (key !== sort?.key) {
       return onSort({ key, direction: 'asc' })
     }
@@ -41,8 +50,8 @@ export const TableHeader = ({ columns, sort, onSort }: Props) => {
   }
 
   return (
-    <thead>
-      <tr>
+    <thead className={s.root}>
+      <tr onClick={handleSorting}>
         {columns.map(colum => {
           const showSort = colum.isSortable && sort && sort.key === colum.key
 
@@ -53,9 +62,13 @@ export const TableHeader = ({ columns, sort, onSort }: Props) => {
                 [dataAttributes.name]: colum.key,
               }}
               key={colum.title}
-              onClick={handleSorting}
             >
-              {colum.title} {showSort && <span>{sort?.direction === 'asc' ? '▲' : '▼'}</span>}
+              <span>
+                {colum.title}
+                {showSort && (
+                  <ChevronUp className={clsx(sort.direction === 'desc' && s.chevronDown)} />
+                )}
+              </span>
             </th>
           )
         })}

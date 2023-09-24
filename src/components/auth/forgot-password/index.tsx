@@ -1,3 +1,4 @@
+import { DevTool } from '@hookform/devtools'
 import React from 'react'
 
 import { ControlledTextField, Card, Button, Typography } from '@components/ui'
@@ -18,6 +19,7 @@ export const ForgotPassword = ({ onSubmit }: SignInProps) => {
         Forgot your password?
       </Typography>
       <form onSubmit={handleSubmit} className={s.form}>
+        <DevTool control={control} />
         <ControlledTextField
           label={'Email'}
           name={'email'}
