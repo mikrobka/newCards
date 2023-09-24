@@ -1,3 +1,4 @@
+import { DevTool } from '@hookform/devtools'
 import React from 'react'
 
 import { ControlledCheckbox, ControlledTextField, Card, Typography, Button } from '@components/ui'
@@ -19,6 +20,7 @@ export const SignIn = ({ onSubmit }: SignInProps) => {
           Sign In
         </Typography>
         <form onSubmit={handleSubmit} className={s.form}>
+          <DevTool control={control} />
           <ControlledTextField
             label={'Email'}
             name={'email'}
