@@ -1,7 +1,7 @@
-import { useState } from 'react'
-
 import { Meta, StoryObj } from '@storybook/react'
-import { Slider } from './index'
+import React, { useState } from 'react'
+
+import { Slider } from '.'
 
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider',
@@ -15,20 +15,12 @@ const meta: Meta<typeof Slider> = {
       control: { type: 'boolean' },
     },
   },
-} satisfies Meta<typeof Slider>
+}
 
 export default meta
-type Story = StoryObj<typeof Slider>
+type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-  render: args => {
-    const [value, setValue] = useState(30)
-
-    const changeHandler = (value: number[]) => setValue(value[0])
-
-    return <Slider {...args} value={[value]} multiple onChange={changeHandler} />
-  },
-}
+export const Default: Story = {}
 export const Disabled: Story = {
   render: args => {
     const [value, setValue] = useState(30)
