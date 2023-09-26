@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react'
-import React, { useState } from 'react'
+import * as React from 'react'
+import { useState } from 'react'
 
-import { Pagination } from '@components/ui/pagination/index'
+import { Pagination } from './index'
 
 const meta = {
   title: 'Components/Pagination',
@@ -35,6 +36,7 @@ export const WithSelect: Story = {
     return (
       <Pagination
         {...args}
+        totalCount={20}
         page={page}
         onChange={setPage}
         perPage={perPage}

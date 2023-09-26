@@ -1,26 +1,72 @@
-import * as SliderPrimitive from '@radix-ui/react-slider'
-import { clsx } from 'clsx'
-import React, { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import * as SliderRadix from '@radix-ui/react-slider'
+import clsx from 'clsx'
+import React from 'react'
+
+import { Typography } from '@components/ui'
 
 import s from './slider.module.scss'
 
-const Slider = forwardRef<
-  ElementRef<typeof SliderPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => (
-  <div className={s.container}>
-    <span>{props?.value?.[0]}</span>
-    <SliderPrimitive.Root ref={ref} className={clsx(s.root, className)} {...props}>
-      <SliderPrimitive.Track className={s.track}>
-        <SliderPrimitive.Range className="absolute h-full bg-primary" />
-      </SliderPrimitive.Track>
-      <SliderPrimitive.Thumb className={s.thumb} />
-      <SliderPrimitive.Thumb className={s.thumb} />
-    </SliderPrimitive.Root>
-    <span>{props?.value?.[1]}</span>
-  </div>
-))
+type SliderPropsType = {
+  value?: number[]
+  defaultValue?: number[]
+  min?: number
+  max?: number
+  step?: number
+  disabled?: boolean
+  multiple?: boolean
+  label?: string
+  onChange?: (value: number[]) => void
+  onChangeCommit?: () => void
+}
 
-Slider.displayName = SliderPrimitive.Root.displayName
+export const Slider = (props: SliderPropsType) => {
+  const {
+    value,
+    defaultValue,
+    min = 0,
+    max = 100,
+    step = 1,
+    label,
+    disabled = false,
+    multiple = false,
+    onChange,
+    onChangeCommit,
+  } = props
 
-export { Slider }
+  const classNames = {
+    sliderContainer: clsx(s.sliderContainer, disabled && s.disabled),
+    slider: s.slider,
+    sliderRoot: s.SliderRoot,
+    sliderTrack: s.SliderTrack,
+    sliderRange: s.SliderRange,
+    sliderThumb: s.SliderThumb,
+    value: s.value,
+  }
+
+  return (
+    <div className={classNames.sliderContainer}>
+      {label && <Typography variant={'body2'}>{label}</Typography>}
+      <div className={classNames.slider}>
+        <div className={classNames.value}>{value && value[0]}</div>
+        <SliderRadix.Root
+          value={value}
+          defaultValue={defaultValue}
+          min={min}
+          max={max}
+          step={step}
+          disabled={disabled}
+          onValueChange={onChange}
+          onValueCommit={onChangeCommit}
+          className={classNames.sliderRoot}
+        >
+          <SliderRadix.Track className={classNames.sliderTrack}>
+            <SliderRadix.Range className={classNames.sliderRange} />
+          </SliderRadix.Track>
+          <SliderRadix.Thumb className={classNames.sliderThumb} />
+          {multiple && <SliderRadix.Thumb className={classNames.sliderThumb} />}
+        </SliderRadix.Root>
+        <div className={classNames.value}>{(value && value[1]) || max}</div>
+      </div>
+    </div>
+  )
+}
