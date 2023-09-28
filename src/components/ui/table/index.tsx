@@ -1,24 +1,27 @@
-import { clsx } from 'clsx'
+import clsx from 'clsx'
 import React, { ComponentProps, FC } from 'react'
 
-import { ChevronUp } from '@assets/icons'
-
 import s from './table.module.scss'
-import { Typography } from '../typography'
 
-export type RootProps = ComponentProps<'table'>
+export type RootProps = {
+  nameTable?: string
+  mb?: string
+  mt?: string
+} & ComponentProps<'table'>
 
-export type Sort = {
-  key: string
-  direction: 'asc' | 'desc'
-} | null
-
-export const Root: FC<RootProps> = ({ className, ...rest }) => {
+export const Root: FC<RootProps> = ({ className, nameTable, mb, ...rest }) => {
   const classNames = {
     table: clsx(className, s.table),
   }
 
-  return <table className={classNames.table} {...rest} />
+  return (
+    <>
+      <span className={s.title} style={{ marginBottom: mb }}>
+        {nameTable}
+      </span>
+      <table className={classNames.table} {...rest} />
+    </>
+  )
 }
 
 export type HeadProps = ComponentProps<'thead'>
@@ -27,50 +30,6 @@ export const Head: FC<HeadProps> = props => {
   return <thead {...props} />
 }
 
-export type Column = {
-  title: string
-  key: string
-  sortable?: boolean
-}
-export const Header: FC<
-  Omit<
-    HeadProps & {
-      columns: Column[]
-      sort?: Sort
-      onSort?: (sort: Sort) => void
-    },
-    'children'
-  >
-> = ({ columns, sort, onSort, ...restProps }) => {
-  const classNames = {
-    chevron: sort?.direction === 'asc' ? '' : s.chevronDown,
-  }
-  const handleSort = (key: string, sortable?: boolean) => () => {
-    if (!onSort || !sortable) return
-
-    if (sort?.key !== key) return onSort({ key, direction: 'asc' })
-
-    if (sort.direction === 'desc') return onSort(null)
-
-    return onSort({
-      key,
-      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
-    })
-  }
-
-  return (
-    <Head {...restProps}>
-      <Row>
-        {columns.map(({ title, key, sortable }) => (
-          <HeadCell key={key} onClick={handleSort(key, sortable)} sortable={sortable}>
-            {title}
-            {sort?.key === key ? <ChevronUp className={classNames.chevron} /> : ''}
-          </HeadCell>
-        ))}
-      </Row>
-    </Head>
-  )
-}
 export type BodyProps = ComponentProps<'tbody'>
 
 export const Body: FC<BodyProps> = props => {
@@ -83,20 +42,13 @@ export const Row: FC<RowProps> = props => {
   return <tr {...props} />
 }
 
-export type HeadCellProps = ComponentProps<'th'> & {
-  sortable?: boolean
-}
-
-export const HeadCell: FC<HeadCellProps> = ({ className, children, sortable, ...rest }) => {
+export type HeadCellProps = ComponentProps<'th'>
+export const HeadCell: FC<HeadCellProps> = ({ className, ...rest }) => {
   const classNames = {
-    headCell: clsx(className, s.headCell, sortable && s.sortable),
+    headCell: clsx(className, s.headCell),
   }
 
-  return (
-    <th className={classNames.headCell} {...rest}>
-      <span>{children}</span>
-    </th>
-  )
+  return <th className={classNames.headCell} {...rest} />
 }
 
 export type CellProps = ComponentProps<'td'>
@@ -119,26 +71,31 @@ export const Empty: FC<ComponentProps<'div'> & { mt?: string; mb?: string }> = (
   }
 
   return (
-    <Typography
-      variant={'h2'}
-      className={classNames.empty}
-      style={{ marginTop: mt, marginBottom: mb }}
-    >
-      Пока тут еще нет данных! :(
-    </Typography>
+    <h2 className={classNames.empty} style={{ marginTop: mt, marginBottom: mb }}>
+      Пока тут еще нет данных! 👀
+    </h2>
   )
 }
-
-export type TableProps = {}
-export const TableComponent = () => {}
-
 export const Table = {
   Root,
   Head,
-  Header,
   Body,
   Row,
   HeadCell,
   Cell,
   Empty,
 }
+
+// export function StarsRating(count: number) {
+//   let stars = Array(5).fill(<StarOutline />)
+//
+//   for (let i = 0; i < count; i++) {
+//     stars[i] = <Star />
+//   }
+//
+//   return (
+//     <Table.Cell style={{ display: 'flex' }} align={'center'}>
+//       {stars}
+//     </Table.Cell>
+//   )
+// }

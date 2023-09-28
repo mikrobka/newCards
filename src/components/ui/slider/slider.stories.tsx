@@ -19,8 +19,16 @@ const meta: Meta<typeof Slider> = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+export const Default: Story = {
+  render: args => {
+    const [value, setValue] = useState(30)
 
-export const Default: Story = {}
+    const changeHandler = (value: number[]) => setValue(value[0])
+
+    return <Slider {...args} value={[value]} multiple onChange={changeHandler} />
+  },
+}
+
 export const Disabled: Story = {
   render: args => {
     const [value, setValue] = useState(30)

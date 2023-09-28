@@ -5,108 +5,81 @@ import {
   DialogOverlay,
   DialogPortal,
   DialogTitle,
+  // DialogTrigger,
 } from '@radix-ui/react-dialog'
+import { Separator } from '@radix-ui/react-separator'
 import { clsx } from 'clsx'
-import { AnimatePresence, motion } from 'framer-motion'
-import React, { ComponentProps, FC } from 'react'
+import React, { ComponentProps, FC, ReactNode } from 'react'
 
-import { Close } from '@/assets/icons'
+import { Typography } from '@/components/ui/typography'
+import { Close } from '@assets/icons'
 
 import s from './modal.module.scss'
 
 export type ModalSize = 'sm' | 'md' | 'lg'
 
 export type ModalProps = {
-  /** The controlled open state of the dialog */
   open: boolean
   onClose?: () => void
+  renderCancelButton?: () => ReactNode
+  renderActionButton?: () => ReactNode
+  showSeparator?: boolean
   showCloseButton?: boolean
   title?: string
-  /** 'sm' | 'md' | 'lg':
-   * sm - 367px,
-   * md - 532px,
-   * lg - 764px.
-   * For other values use className */
-  size?: ModalSize
+  size?: ModalSize //sm - 367px,md - 532px,lg - 764px.
+  children?: ReactNode
+  className?: string
 } & ComponentProps<'div'>
 
-const dropIn = {
-  hidden: {
-    y: '-100vh',
-    x: '-50%',
-    opacity: 0,
-  },
-  visible: {
-    y: '-50%',
-    x: '-50%',
-    opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: 'spring',
-      damping: 25,
-      stiffness: 500,
-    },
-  },
-  exit: {
-    y: '100vh',
-    opacity: 0,
-  },
-}
-
 export const Modal: FC<ModalProps> = ({
-  open = false,
+  onClose,
+  open,
+  renderActionButton,
+  renderCancelButton,
   size = 'md',
   title,
   className,
-  onClose,
   children,
   showCloseButton = true,
+  showSeparator = true,
 }) => {
-  function handleModalClosed() {
+  const classNames = {
+    content: getContentClassName(size, className),
+  }
+
+  function onCloseHandler() {
     onClose?.()
   }
 
-  const classNames = {
-    overlay: s.overlay,
-    content: getContentClassName(size, className),
-    header: s.header,
-    title: s.title,
-    closeButton: s.closeButton,
-    contentBox: s.contentBox,
-  }
-
   return (
-    <Dialog open={open} onOpenChange={handleModalClosed}>
-      <AnimatePresence>
-        {open && (
-          <DialogPortal forceMount>
-            <DialogOverlay asChild>
-              <motion.div
-                className={classNames.overlay}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              />
-            </DialogOverlay>
-            <DialogContent className={classNames.content} asChild forceMount>
-              <motion.div variants={dropIn} initial="hidden" animate="visible" exit="exit">
-                <header className={classNames.header}>
-                  <DialogTitle asChild>
-                    <h2 className={classNames.title}>{title}</h2>
-                  </DialogTitle>
+    <Dialog open={open} onOpenChange={onCloseHandler}>
+      {open && (
+        <DialogPortal>
+          <DialogOverlay className={s.DialogOverlay} />
+          <DialogContent className={classNames.content}>
+            <div className={s.titleWrapper}>
+              {showCloseButton && (
+                <DialogClose>
+                  <button className={s.IconButton}>
+                    <Close />
+                  </button>
+                </DialogClose>
+              )}
+              <DialogTitle className={s.DialogTitle}>
+                <Typography variant={'h2'}>{title}</Typography>
+                {showSeparator && <Separator className={s.separator} />}
+              </DialogTitle>
+            </div>
 
-                  {showCloseButton && (
-                    <DialogClose className={classNames.closeButton}>
-                      <Close />
-                    </DialogClose>
-                  )}
-                </header>
-                <div className={classNames.contentBox}>{children}</div>
-              </motion.div>
-            </DialogContent>
-          </DialogPortal>
-        )}
-      </AnimatePresence>
+            <div className={s.contentBox}>{children}</div>
+
+            <div className={s.footerBlock}>
+              <DialogClose>{renderCancelButton?.()}</DialogClose>
+              <DialogClose className={s.actionButton}>{renderActionButton?.()}</DialogClose>
+            </div>
+          </DialogContent>
+        </DialogPortal>
+      )}
     </Dialog>
   )
 }
@@ -114,7 +87,7 @@ export const Modal: FC<ModalProps> = ({
 function getContentClassName(size: ModalSize, className?: string) {
   const sizeClassName = getSizeClassName(size)
 
-  return clsx(className, s.content, sizeClassName)
+  return clsx(className, s.DialogContent, sizeClassName)
 }
 
 function getSizeClassName(size: ModalSize) {
