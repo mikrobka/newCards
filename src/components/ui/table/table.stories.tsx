@@ -3,6 +3,8 @@ import React, { Meta, StoryObj } from '@storybook/react'
 import { Typography } from '@/components/ui/typography'
 import { ChevronUp, Delete, Edit, Play } from '@assets/icons'
 import { Checkbox } from '@components/ui'
+import { Rating } from '@components/ui/rating'
+import { ReadMore } from '@components/ui/read-more'
 import { Table } from '@components/ui/table/index'
 
 const meta = {
