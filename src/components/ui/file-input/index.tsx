@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ChangeEvent, ReactNode, useRef } from 'react'
+import React, { ChangeEvent, ReactNode, useRef } from 'react'
 
 import s from './file-input.module.scss'
 
@@ -20,8 +20,7 @@ type FileInputPropsType = {
   trigger: ReactNode
 }
 
-export const FileInput = (props: FileInputPropsType) => {
-  const { onChange, disabled = false, trigger } = props
+export const FileInput = ({ onChange, disabled = false, trigger }: FileInputPropsType) => {
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   const handleUploadClick = () => inputRef.current?.click()
