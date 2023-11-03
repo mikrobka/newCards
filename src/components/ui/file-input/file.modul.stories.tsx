@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 
-import { Edit } from '@assets/icons'
 import { Button } from '@components/ui'
 import { FileInput } from '@components/ui/file-input/index'
 
@@ -47,7 +46,7 @@ export const UploadWithIcon: Story = {
 
     return (
       <div>
-        <FileInput {...args} onChange={changeFileHandler} trigger={<Edit />} />
+        <FileInput {...args} onChange={changeFileHandler} trigger={<EditIcon />} />
         <div>{file}</div>
       </div>
     )
